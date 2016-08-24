@@ -24,30 +24,20 @@ sock.bind((HOST, PORT))
 sock.listen(1)
 print('listening on %s:%d' % (HOST, PORT))
 
-while 1:
+while True:
     conn, addr = sock.accept()
     print('Connected by:', addr)
     try:
-        while 1:
+        while True:
             data = conn.recv(1024)
             if not data.strip():
                 print('recv is null')
                 break
-
-            print('--------------------------------------')
-            print(conn.recv(1024))
-            print(b'\xe5\x93\x88\xe5\x93\x88\xe5\x93\x88'.decode('utf-8'))
-            print('--------------------------------------')
-            print(conn.recv(1024).decode())
-            print('--------------------------------------')
-            print(conn.recv(1024).decode('utf-8').strip())
-            print('--------------------------------------')
-            command = conn.recv(1024).replace('\n', '')
+            command = data.decode('utf-8').replace('\n', '')
             if not command:
                 break
             execute(command)
-            # conn.send('Done!')
-            # conn.close()
+            conn.send('Done!'.encode('utf-8'))
 
     except Exception as e:
         print('Exception: ', e)
