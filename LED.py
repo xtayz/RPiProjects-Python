@@ -13,17 +13,16 @@ pwm = GPIO.PWM(PIN_NO, 50)
 pwm.start(0)
 
 try:
-	while True:
-		for i in xrange(0, 101, 1):
-			pwm.ChangeDutyCycle(i)
-			time.sleep(.03)
-		for i in xrange(100, -1, -1):
-			pwm.ChangeDutyCycle(i)
-			time.sleep(.03)
-			
+    while True:
+        for i in xrange(0, 101, 1):
+            pwm.ChangeDutyCycle(i)
+            time.sleep(.03)
+        for i in xrange(100, -1, -1):
+            pwm.ChangeDutyCycle(i)
+            time.sleep(.03)
+
 except KeyboardInterrupt:
-	pass
+    pass
 
 pwm.stop()
 GPIO.cleanup()
-		
