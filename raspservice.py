@@ -2,24 +2,27 @@
 # -*- coding: utf-8 -*-
 
 from socket import *
-# from car import Car
+from car import Car
 
-# commands = {
-#     'forward': Car.forward(),
-#     'back': Car.back(),
-#     'left': Car.turn_left(),
-#     'right': Car.turn_right()
-# }
+Car.init()
+
+commands = {
+    'forward': Car.forward,
+    'back': Car.back,
+    'left': Car.turn_left,
+    'right': Car.turn_right
+}
 
 
 def execute(command):
     print(command)
-    # commands[command]()
+    commands[command]()
 
 HOST = '0.0.0.0'
 PORT = 9876
 
 sock = socket(AF_INET, SOCK_STREAM)
+sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
 sock.bind((HOST, PORT))
 sock.listen(1)
 print('listening on %s:%d' % (HOST, PORT))
@@ -39,9 +42,17 @@ while True:
             execute(command)
             conn.send('Done!'.encode('utf-8'))
 
+	except KeyboardInterrupt:
+		
+		Car.stop() 
+		sock.shutdown(SHUT_RDWR) 
+		conn.close()
+		sock.close()
+		
     except Exception as e:
-        print('Exception: ', e)
+        print('---- Exception: ', e)
         sock.shutdown(SHUT_RDWR)
         conn.close()
         sock.close()
         print('socket closed!')
+
