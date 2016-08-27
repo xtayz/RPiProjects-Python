@@ -51,6 +51,6 @@ try:
             print('socket closed!')
 
 except KeyboardInterrupt:
-    Car.clearup()
+    Car.cleanup()
     sock.shutdown(SHUT_RDWR)
     sock.close()

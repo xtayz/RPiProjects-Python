@@ -99,8 +99,8 @@ class Car:
             wheel.stop()
 
     @staticmethod
-    def clearup():
-        GPIO.clearup()
+    def cleanup():
+        GPIO.cleanup()
 
 
 # if __name__ == '__main__':
