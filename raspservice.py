@@ -10,7 +10,8 @@ commands = {
     'forward': Car.forward,
     'back': Car.back,
     'left': Car.turn_left,
-    'right': Car.turn_right
+    'right': Car.turn_right,
+    'stop': Car.stop()
 }
 
 
