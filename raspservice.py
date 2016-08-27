@@ -11,7 +11,7 @@ commands = {
     'back': Car.back,
     'left': Car.turn_left,
     'right': Car.turn_right,
-    'stop': lambda: 1 + 2
+    'stop': Car.stop
 }
 
 
