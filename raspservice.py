@@ -28,29 +28,29 @@ sock.listen(1)
 print('listening on %s:%d' % (HOST, PORT))
 
 try:
-	while True:
-	    conn, addr = sock.accept()
-	    print('Connected by:', addr)
-	    try:
-	        while True:
-	            data = conn.recv(1024)
-	            if not data.strip():
-	                print('recv is null')
-	                break
-	            command = data.decode('utf-8').replace('\n', '')
-	            if not command:
-	                break
-	            execute(command)
-	            conn.send('Done!'.encode('utf-8'))
-	
-	    except Exception as e:
-	        print('---- Exception: ', e)
-	        sock.shutdown(SHUT_RDWR)
-	        conn.close()
-	        sock.close()
-	        print('socket closed!')
-	        
+    while True:
+        conn, addr = sock.accept()
+        print('Connected by:', addr)
+        try:
+            while True:
+                data = conn.recv(1024)
+                if not data.strip():
+                    print('recv is null')
+                    break
+                command = data.decode('utf-8').replace('\n', '')
+                if not command:
+                    break
+                execute(command)
+                conn.send('Done!'.encode('utf-8'))
+
+        except Exception as e:
+            print('---- Exception: ', e)
+            sock.shutdown(SHUT_RDWR)
+            conn.close()
+            sock.close()
+            print('socket closed!')
+
 except KeyboardInterrupt:
-	Car.clearup()
-	sock.shutdown(SHUT_RDWR)
-	sock.close()	
+    Car.clearup()
+    sock.shutdown(SHUT_RDWR)
+    sock.close()

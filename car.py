@@ -97,27 +97,27 @@ class Car:
     def stop():
         for wheel in Car.wheels:
             wheel.stop()
-            
+
     @staticmethod
     def clearup():
         GPIO.clearup()
 
 
-#~ if __name__ == '__main__':
-#~ 
-    #~ try:
-        #~ car = Car()
-        #~ car.forward()
-        #~ time.sleep(2)
-        #~ car.back()
-        #~ time.sleep(2)
-        #~ car.turn_left()
-        #~ time.sleep(2)
-        #~ car.turn_right()
-        #~ time.sleep(2)
-        #~ car.stop()
-#~ 
-    #~ except KeyboardInterrupt:
-        #~ pass
-#~ 
-    #~ GPIO.cleanup()
+# if __name__ == '__main__':
+
+#     try:
+#         car = Car()
+#         car.forward()
+#         time.sleep(2)
+#         car.back()
+#         time.sleep(2)
+#         car.turn_left()
+#         time.sleep(2)
+#         car.turn_right()
+#         time.sleep(2)
+#         car.stop()
+
+#     except KeyboardInterrupt:
+#         pass
+
+#     GPIO.cleanup()
