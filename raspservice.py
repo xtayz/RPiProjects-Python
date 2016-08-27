@@ -42,17 +42,15 @@ while True:
             execute(command)
             conn.send('Done!'.encode('utf-8'))
 
-	except KeyboardInterrupt:
-		
-		Car.stop() 
-		sock.shutdown(SHUT_RDWR) 
-		conn.close()
-		sock.close()
-		
+    except KeyboardInterrupt:
+        Car.stop()
+        sock.shutdown(SHUT_RDWR)
+        conn.close()
+        sock.close()
+
     except Exception as e:
         print('---- Exception: ', e)
         sock.shutdown(SHUT_RDWR)
         conn.close()
         sock.close()
         print('socket closed!')
-
